@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="LF">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+        单向数据绑定: <input type="text" :value="name"/><br/>
+        双向数据绑定: <input type="text" v-model:value="name"/><br/>
+
+        <!--双向绑定一般用在表单类应用上，v-model只能影响输入类元素的标签-->
+        <h2 v-model:x="name">hello</h2>
+</div>
+<script>
+    Vue.config.productionTip  = false;
+
+    new Vue({
+        el:'#root',
+        data:{
+            name: 'ougaho'
+        }
+    })
+</script>
+</body>
+</html>

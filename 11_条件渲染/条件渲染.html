@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        <!--使用v-show做条件渲染 -->
+      <!-- <h2 v-show="false">欢迎来到 {{city}}</h2> -->
+      <!-- <h2 v-show="1===1">欢迎来到 {{city}}</h2> -->
+        <!--使用v-if做条件渲染 -->
+      <!-- <h2 v-if="fasle">欢迎来到 {{city}}</h2> -->
+      <div>n的值是:{{n}}</div>
+      <button @click="n++">点我n+1</button>
+      <!-- <h2 v-if="n===1">aug</h2>
+      <h2 v-else-if="n===2">react</h2>
+      <h2 v-else-if="n===3">vue</h2>
+      <h2 v-else>什么都没有了</h2> -->
+
+      <template v-if="n===1">
+        <h2>react</h2>
+        <h2>vue</h2>
+      </template>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: "#root",
+        data: {
+          city: "杭州",
+          n:0
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo1{
+            height: 50px;
+            background-color: skyblue;
+        }
+        .box1{
+            padding: 5px;
+            background-color: skyblue;
+        }
+        .box2{
+            padding: 5px;
+            background-color: orange;
+        }
+        .list{
+            height: 200px;
+            width: 200px;
+            background-color: peru;
+            overflow: auto;
+        }
+        li{
+            height: 100px;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <h2>欢迎来到 {{name}}</h2>
+      <!--Vue常用的事件修饰符
+        1.prevent: 阻止标签的默认事件(常用)
+        2.stop: 阻止事件冒泡(常用)
+        3.once: 事件只触发一次(常用)
+
+        4.capture: 使用事件的捕获模式
+        5.self: 只要event和target是当前操作的元素时才触发
+        6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕
+    -->
+    <!--阻止默认事件-->
+      <a href="http://www.baidu.com" @click.prevent="showInfo">点我提示信息</a>
+      <!--阻止事件冒泡-->
+      <div @click="showInfo" class="demo1">
+        <!-- <button @click="showInfo">按钮1</button> -->
+        <a href="http://www.baidu.com" @clock.stop="showInfo">点我</a>
+      </div>
+      <!--事件只触发一次-->
+      <button @click.once="showInfo">按钮2</button>
+
+      <!--使用捕获模式-->
+      <div class="box1" @click.capture="showMsg(1)">
+            div1
+            <div class="box2" @click="showMsg(2)">
+                div2
+            </div>
+      </div>
+      <!--event和target是当前元素时才出发-->
+      <div @click.self="showInfo" class="demo1">
+        <button @click="showInfo">按钮1</button>
+      </div>
+
+      <!--事件的默认行为立即执行，无需等待事件回调执行完毕-->
+      <ul class="list" @wheel.passive="demo" >
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: "#root",
+        data: {
+            name:'okii'
+        },
+        methods: {
+            showInfo(e){
+                alert("同学你好")
+            },
+            showMsg(number){
+                alert(number)
+            },
+            demo(){
+                for (let i = 0; i < 100000; i++) {
+                    console.log("#");
+                }
+                console.log('lazy')
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

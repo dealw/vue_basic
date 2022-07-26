@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="LF">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <h2>遍历数组</h2>
+    <ul>
+        <li v-for="p,index in persons" :key="p.id">
+            {{p.name}}--{{p.age}}--{{index}}
+        </li>
+    </ul>
+
+    <h2>遍历对象</h2>
+    <ul>
+        <li v-for="value,k in car" :key="k">
+            {{k}}--{{value}}
+        </li>
+    </ul>
+
+    <h2>遍历字符串</h2>
+    <ul>
+        <li v-for="char,index of str" :key="index">
+            {{char}}--{{index}}
+        </li>
+    </ul>
+
+    <h2>遍历次数</h2>
+    <ul>
+        <li v-for="num,index of 5" :key="index">
+            {{num}}--{{index}}
+        </li>
+    </ul>
+</div>
+<script>
+  Vue.config.productionTip = false;
+  new Vue({
+  el:'#root',
+  data:{
+    persons:[
+        {id:'001',name:'张三',age:18},
+        {id:'002',name:'李四',age:19},
+        {id:'003',name:'王五',age:20}
+    ],
+    car:{
+        name:'奥迪',
+        color:'黑色',
+        price:'70W'
+    },
+    str:'abdjc'
+  }
+  })
+</script>
+</body>
+</html>

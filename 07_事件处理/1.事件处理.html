@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>欢迎来到 {{name}}</h2>
+      <button @click="showInfo1">点我显示信息(不传参)</button>
+      <button @click="showInfo2(926,$event)">点我显示信息(传参)</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      const vm=new Vue({
+        el: "#root",
+        data: {
+            name: 'bbk'
+        },
+        methods: {
+            showInfo1(){
+                alert("okii")
+            },
+            showInfo2(number,a){
+                console.log(a)
+                alert(number)
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

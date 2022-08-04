@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2 :style="{opacity}">欢迎学习Vue</h2>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: "#root",
+        data: {
+          opacity: 1,
+        },
+        methods: {},
+        //Vue完成模板的解析并把真实的DOM元素放入页面后的时机，挂载完毕
+        mounted() {
+          setInterval(() => {
+            this.opacity -= 0.01;
+            if (this.opacity <= 0) this.opacity = 1;
+          }, 10);
+        },
+      });
+
+      //通过外部的定时器实现（不推荐）
+      //   setInterval(() => {
+      //     vm.opacity -= 0.01;
+      //     if (vm.opacity <= 0) vm.opacity = 1;
+      //   }, 20);
+    </script>
+  </body>
+</html>

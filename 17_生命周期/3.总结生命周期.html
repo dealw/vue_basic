@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2 :style="{opacity}">欢迎学习Vue</h2>
+      <button @click="opacity=1">透明度设置为1</button>
+      <button @click="stop">点我停止变换</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: "#root",
+        data: {
+          opacity: 1,
+        },
+        methods: {
+          stop() {
+            this.$destroy();
+          },
+        },
+        mounted() {
+          this.timer = setInterval(() => {
+            console.log("Interval")
+            this.opacity -= 0.01;
+            if (this.opacity <= 0) this.opacity = 1;
+          }, 20);
+        },
+        beforeDestroy() {
+            console.log("vm要被销毁了")
+            clearInterval(this.timer);
+        },
+      });
+    </script>
+  </body>
+</html>

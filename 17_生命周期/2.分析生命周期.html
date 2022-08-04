@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>当前的n值是:{{n}}</h2>
+      <button @click="add">点我n+1</button>
+      <button @click="bye">点我销毁vm</button>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: "#root",
+        data: {
+          n: 1,
+        },
+        methods: {
+          add() {
+            console.log("add")
+            this.n++;
+          },
+          bye(){
+            console.log("bye")
+            this.$destroy()
+          }
+        },
+        watch:{
+          n(){
+            console.log("n变了")
+          }
+        },
+        beforeCreate() {
+          console.log("beforeCreate");
+        },
+        created() {
+          //创建数据代理 创建数据监测
+          console.log("created");
+        },
+        beforeMount() { 
+          //此时页面呈现的是未经过Vue编译的DOM，不作为最终的DOM
+          console.log("beforeMount");
+        },
+        mounted() {
+          //页面中呈现经过Vue编译过的DOM
+          console.log("mounted")
+        },
+        beforeUpdate() {
+          //数据已经更新了，但是还没有渲染到页面上
+          console.log("beforeUpdate")
+        },
+        updated() {
+          //数据已经渲染到页面上了
+          console.log("updated")
+        },
+        beforeDestroy() {
+          //对数据进行所有操作都不会触发更新，执行关闭定时器、取消订阅消息等操作
+          console.log("beforeDestroy")
+        },
+        destroyed() {
+          console.log("destroyed")
+        },
+      });
+    </script>
+  </body>
+</html>

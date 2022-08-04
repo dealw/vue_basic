@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue.set的使用</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h2>set的使用方法</h2>
+      <button @click="addSex">添加性别</button>
+      <button @click="changeSex">更改性别</button>
+      <h3>姓名：{{stu.name}}</h3>
+      <h3>年龄{{stu.age}}</h3>
+      <h3 v-if="stu.sex">性别：{{stu.sex}}</h3>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: "#root",
+        data: {
+          stu: {
+            name: "deal",
+            age: 24,
+          },
+        },
+        methods: {
+          addSex() {
+            Vue.set(this.stu, "sex", "男");
+          },
+          changeSex() {
+            this.stu.sex = this.stu.sex == "男" ? "女" : "男";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

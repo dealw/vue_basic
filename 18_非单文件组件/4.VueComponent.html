@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="LF" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <school></school>
+      <hello></hello>
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+
+      const school = Vue.extend({
+        template: `
+        <div>
+            <h2>学校名称:{{schoolName}}</h2>
+            <h2>学校地址:{{address}}</h2>
+            <button @click="showName">点我提示学校名字</button>
+        </div>
+        `,
+        //el: "#root", 一定不要写el配置项，最终被vm管理，由知名决定服务于哪个组件
+        data() {
+          return {
+            schoolName: "xtc",
+            address: "广东",
+          };
+        },
+        methods: {
+          showName() {
+            alert(this.schoolName);
+          },
+        },
+      });
+
+      const hello = Vue.extend({
+        template: `
+         <h2>{{msg}}</h2>
+        `,
+        data() {
+          return {
+            msg: "你好呀",
+          };
+        },
+      });
+      new Vue({
+        el: "#root",
+        components: {
+          school,
+          hello,
+        },
+      });
+      console.log('@',school)
+      console.log('@',hello)
+    </script>
+  </body>
+</html>
